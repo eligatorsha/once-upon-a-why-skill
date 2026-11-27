@@ -1,0 +1,29 @@
+{
+  "name": "once-upon-a-why-skill",
+  "version": "1.0.0",
+  "description": "A Claude Code skill + Remotion kit for vertical (1080x1920, 30 fps) 3D cartoon explainer episodes with local voices and word-timed captions.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "./render.sh",
+    "check-captions": "node episodes/ouaw-01-monday/run_check.mjs",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.3.0",
+    "@remotion/cli": "4.0.543",
+    "@remotion/google-fonts": "4.0.543",
+    "@remotion/three": "4.0.543",
+    "@types/three": "0.178.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.543",
+    "three": "0.178.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "esbuild": "0.28.1",
+    "typescript": "5.9.3"
+  }
+}

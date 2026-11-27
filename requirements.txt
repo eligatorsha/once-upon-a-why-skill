@@ -1,0 +1,7 @@
+# Python 3.12 venv on Apple Silicon (MLX). Models download separately on first use (see README, "Voice models").
+mlx-audio==0.6.5
+mlx-whisper==0.4.3
+misaki==0.9.4
+num2words==0.5.14
+numpy
+scipy

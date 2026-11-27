@@ -1,0 +1,48 @@
+# dependencies / environments
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# renders and stills (regenerate with ./render.sh / remotion still)
+out/
+*.mp4
+*.mov
+*.png
+!docs/*.png
+
+# generated audio: voices, takes, SFX, music, build copies
+*.wav
+*.mp3
+*.m4a
+*.flac
+public/
+
+# generated episode data
+episodes/*/voice/raw/
+episodes/*/voice/takes/
+episodes/*/voice/words.json
+episodes/*/voice/check.json
+episodes/*/voice/pron-check.json
+episodes/*/caption-check.json
+episodes/*/*.jpg
+
+# model weights and caches
+*.safetensors
+*.gguf
+*.bin
+*.pt
+.cache/
+huggingface/
+
+# secrets and local settings
+.env
+.env.*
+*.pem
+*.key
+.claude/settings.local.json
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

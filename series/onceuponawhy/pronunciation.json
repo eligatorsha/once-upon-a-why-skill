@@ -1,0 +1,264 @@
+{
+ "_about": "Once Upon a Why pronunciation dictionary (bible §13). Applied automatically before every TTS call by series/onceuponawhy/tools/pron.py. kokoro_us / kokoro_uk: Misaki phonemes for Kokoro, written into the text as [word](/phonemes/), stress marks ˈ (primary) and ˌ (secondary). Misaki shorthands: A = eɪ, I = aɪ, O = oʊ (US), Q = əʊ (UK), W = aʊ, Y = ɔɪ, ʤ = dʒ, ʧ = tʃ, T = US flap. respell_us / respell_uk: plain-text respelling for models without phoneme control (Chatterbox, Qwen3-TTS, Dia, CSM); null = the word is read correctly as written. 'match' lists the spellings that are replaced (case-insensitive, whole words). Add new words at the end; keep every entry checked by ear in pronunciation-test.wav.",
+ "words": [
+  {
+   "word": "Mika",
+   "match": [
+    "Mika"
+   ],
+   "kokoro_us": "mˈikə",
+   "kokoro_uk": "mˈiːkə",
+   "respell_us": "Meeka",
+   "respell_uk": "Meeka",
+   "note": "MEE-kuh"
+  },
+  {
+   "word": "Nora",
+   "match": [
+    "Nora"
+   ],
+   "kokoro_us": "nˈɔɹə",
+   "kokoro_uk": "nˈɔːɹə",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "NOR-uh"
+  },
+  {
+   "word": "Claude",
+   "match": [
+    "Claude"
+   ],
+   "kokoro_us": "klˈɔːd",
+   "kokoro_uk": "klˈɔːd",
+   "respell_us": "Clawd",
+   "respell_uk": "Clawd",
+   "note": "one long syllable, \"Clawd\" (rhymes with awed); user: sounded a bit off, US vowel lengthened 2026-11-27"
+  },
+  {
+   "word": "PhD",
+   "match": [
+    "PhD",
+    "PhDs"
+   ],
+   "kokoro_us": "pˌiˌAʧdˈi",
+   "kokoro_uk": "pˌiːˌAʧdˈiː",
+   "respell_us": "P H D",
+   "respell_uk": "P H D",
+   "note": "pee-aitch-DEE, stress on D"
+  },
+  {
+   "word": "CV",
+   "match": [
+    "CV"
+   ],
+   "kokoro_us": "sˌivˈi",
+   "kokoro_uk": "sˌiːvˈiː",
+   "respell_us": "C V",
+   "respell_uk": "C V",
+   "note": "see-VEE"
+  },
+  {
+   "word": "LinkedIn",
+   "match": [
+    "LinkedIn"
+   ],
+   "kokoro_us": "lˈɪŋktˌɪn",
+   "kokoro_uk": "lˈɪŋktˌɪn",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "LINKED-in (respelling \"Linked In\" made Chatterbox Turbo slow and halting; read as written)"
+  },
+  {
+   "word": "master's",
+   "match": [
+    "master's",
+    "masters"
+   ],
+   "kokoro_us": "mˈæstəɹz",
+   "kokoro_uk": "mˈɑːstəz",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "MAS-terz; UK MAH-stuhz"
+  },
+  {
+   "word": "supervisor",
+   "match": [
+    "supervisor"
+   ],
+   "kokoro_us": "sˈupəɹvˌIzəɹ",
+   "kokoro_uk": "sˈuːpəvˌIzə",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "SOO-per-vy-zer"
+  },
+  {
+   "word": "scholarship",
+   "match": [
+    "scholarship"
+   ],
+   "kokoro_us": "skˈɑləɹʃˌɪp",
+   "kokoro_uk": "skˈɒləʃɪp",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "SKOL-ar-ship"
+  },
+  {
+   "word": "Erasmus",
+   "match": [
+    "Erasmus"
+   ],
+   "kokoro_us": "ɪɹˈæzməs",
+   "kokoro_uk": "ɪɹˈazməs",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "ih-RAZ-mus, stress on the second syllable (the respelling ih-RAZZ-mus confused Qwen3; the expressive models read the plain word)"
+  },
+  {
+   "word": "thesis",
+   "match": [
+    "thesis"
+   ],
+   "kokoro_us": "θˈisɪs",
+   "kokoro_uk": "θˈiːsɪs",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "THEE-sis"
+  },
+  {
+   "word": "dissertation",
+   "match": [
+    "dissertation"
+   ],
+   "kokoro_us": "dˌɪsəɹtˈAʃən",
+   "kokoro_uk": "dˌɪsətˈAʃən",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "dis-er-TAY-shun"
+  },
+  {
+   "word": "interview",
+   "match": [
+    "interview"
+   ],
+   "kokoro_us": "ˈɪntəɹvjˌu",
+   "kokoro_uk": "ˈɪntəvjˌuː",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "IN-ter-view"
+  },
+  {
+   "word": "résumé",
+   "match": [
+    "résumé",
+    "resumé"
+   ],
+   "kokoro_us": "ɹˈɛzəmˌA",
+   "kokoro_uk": "ɹˈɛzjʊmˌA",
+   "respell_us": "rezzumay",
+   "respell_uk": "rezzumay",
+   "note": "REZ-uh-may (the document, never 're-ZOOM')"
+  },
+  {
+   "word": "Oxford",
+   "match": [
+    "Oxford"
+   ],
+   "kokoro_us": "ˈɑksfəɹd",
+   "kokoro_uk": "ˈɒksfəd",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "OX-ford"
+  },
+  {
+   "word": "Cambridge",
+   "match": [
+    "Cambridge"
+   ],
+   "kokoro_us": "kˈAmbɹɪʤ",
+   "kokoro_uk": "kˈAmbɹɪʤ",
+   "respell_us": "Came-bridge",
+   "respell_uk": "Came-bridge",
+   "note": "KAYM-brij"
+  },
+  {
+   "word": "graduate scheme",
+   "match": [
+    "graduate scheme",
+    "graduate schemes"
+   ],
+   "kokoro_us": "ɡɹˈæʤuət skˈim",
+   "kokoro_uk": "ɡɹˈaʤuət skˈiːm",
+   "respell_us": "gradjoo-it scheme",
+   "respell_uk": "gradjoo-it scheme",
+   "note": "GRAD-joo-it (noun, never -ate)"
+  },
+  {
+   "word": "cover letter",
+   "match": [
+    "cover letter"
+   ],
+   "kokoro_us": "kˈʌvəɹ lˈɛTəɹ",
+   "kokoro_uk": "kˈʌvə lˈɛtə",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "KUV-er LET-er"
+  },
+  {
+   "word": "internship",
+   "match": [
+    "internship"
+   ],
+   "kokoro_us": "ˈɪntɜɹnʃˌɪp",
+   "kokoro_uk": "ˈɪntɜːnʃɪp",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "IN-turn-ship"
+  },
+  {
+   "word": "research",
+   "match": [
+    "research"
+   ],
+   "kokoro_us": "ɹˈisɜɹʧ",
+   "kokoro_uk": "ɹɪsˈɜːʧ",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "US REE-search; UK ri-SEARCH"
+  },
+  {
+   "word": "application",
+   "match": [
+    "application"
+   ],
+   "kokoro_us": "ˌæpləkˈAʃən",
+   "kokoro_uk": "ˌaplɪkˈAʃən",
+   "respell_us": null,
+   "respell_uk": null,
+   "note": "ap-li-KAY-shun"
+  },
+  {
+   "word": "Kokoro",
+   "match": [
+    "Kokoro"
+   ],
+   "kokoro_us": "kˌOkˈOɹO",
+   "kokoro_uk": "kˌQkˈQɹQ",
+   "respell_us": "Cocoro",
+   "respell_uk": "Cocoro",
+   "note": "\"Cocoro\": koh-koh-roh, even syllables (user 2026-11-27)"
+  },
+  {
+   "word": "jetlag",
+   "match": [
+    "jetlag",
+    "jet lag"
+   ],
+   "kokoro_us": "ʤˈɛtlˌæɡ",
+   "kokoro_uk": "ʤˈɛtlˌaɡ",
+   "respell_us": "jet lag",
+   "respell_uk": "jet lag",
+   "note": "JET-lag, two clear syllables, stress on JET (Misaki has no entry for the one-word spelling; added for ep 1, 2026-11-27)"
+  }
+ ],
+ "_add_here": "Words that sounded wrong in the samples go below this line once the user lists them."
+}
