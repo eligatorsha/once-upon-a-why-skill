@@ -23,7 +23,6 @@ RAW, TAKES, LINES = (os.path.join(V, d) for d in ("raw", "takes", "lines"))
 # LOCKED 2026-11-27 (user pick, v3 take 8): Kokoro am_echo, speed 1.05, +1 semitone with tempo kept, close and dry
 CLAUDE_VOICE = "am_echo"
 CLAUDE_FX = "asetrate=24000*1.059463,aresample=24000,atempo=0.943874,highpass=f=70"
-WHISPER = "mlx-community/whisper-small-mlx"
 
 # The script, exact words. "say" = caption/check words. Mika takes: Turbo text variants (tags = human sounds/emotion).
 # Claude takes: list of (text, speed, gap_after_s) chunks spliced before the voice chain. "pace" = Mika's target words/s.
@@ -129,7 +128,7 @@ def aliveness(a, sr):
 def whisper(p, words=False):
     import mlx_whisper
 
-    return mlx_whisper.transcribe(p, path_or_hf_repo=WHISPER, language="en", word_timestamps=words)
+    return mlx_whisper.transcribe(p, path_or_hf_repo=mt.whisper_path(), language="en", word_timestamps=words)
 
 
 def prep(text, who):
@@ -146,7 +145,7 @@ def gen(only):
         lines = [L for L in todo if L["who"] == who]
         if not lines:
             continue
-        m = load_model(mt.REPOS[model])
+        m = mt.load_pinned(model)
         sr = m.sample_rate
         for L in lines:
             for k, t in enumerate(L["takes"]):

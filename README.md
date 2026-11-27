@@ -12,6 +12,10 @@ and Claude, a small felted-clay helper, explains.
 
 *Episode 1, "Why am I so tired on Mondays?" (social jetlag): cover and one frame per second.*
 
+> **New here? Follow [GETTING-STARTED.md](GETTING-STARTED.md).** It sets up the exact same studio (characters,
+> locked voices at pinned model versions, workflow) step by step, checks your voices against the reference samples,
+> and shows how to make your first episode with `/ouaw-episode` and the [episode brief template](docs/EPISODE-BRIEF-TEMPLATE.md).
+
 ## What's inside
 
 | Path | What |
@@ -48,7 +52,7 @@ git clone <this repo> once-upon-a-why-skill && cd once-upon-a-why-skill
 ```
 
 ```bash
-npm install
+npm ci
 ```
 
 ```bash
@@ -128,8 +132,11 @@ Takes are sampled, so a rebuild sounds a little different from the original epis
 
 ## Voice models (downloaded separately)
 
-The models are **not included**. mlx-audio / mlx-whisper download them from Hugging Face on first use, and each one
-comes under **its own licence**; check the model card before you publish anything made with them.
+The models are **not included**. mlx-audio / mlx-whisper download them from Hugging Face on first use, **at the
+exact revisions the series was made with** (pinned in `series/onceuponawhy/voice-tests/v2/make_takes.py`), and each
+one comes under **its own licence**; check the model card before you publish anything made with them.
+Three reference samples (one per character) are in the repo; `series/onceuponawhy/tools/voice_check.py` compares
+your voices with them.
 
 | Role | Model |
 |---|---|

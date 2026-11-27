@@ -93,6 +93,37 @@ REPOS = {
     "kokoro": "prince-canuma/Kokoro-82M",
 }
 
+# PINNED model snapshots: the exact revisions the series was made with (2026-11-27). Loading through load_pinned()
+# downloads that snapshot once into the Hugging Face cache, so a later upstream change can't alter the voices.
+WHISPER_REPO = "mlx-community/whisper-small-mlx"
+REVISIONS = {
+    "prince-canuma/Kokoro-82M": "e02c9eada7ce7416798af36b190a8a2dd2ecd566",
+    "mlx-community/chatterbox-turbo-fp16": "b2d0a13aa7cfff0a06d9acb247ae91c8f19a6d75",
+    "mlx-community/Qwen3-TTS-12Hz-1.7B-VoiceDesign-bf16": "7d3824abff87e49756bb0f83fb5411de75d160c4",
+    WHISPER_REPO: "45f3915923c7a79a5a5b5a7d909d39aeb0e5630e",
+}
+
+
+def pinned(repo):
+    """local path of the pinned snapshot (downloads it the first time); unpinned repos load as-is"""
+    if repo not in REVISIONS:
+        return repo
+    from huggingface_hub import snapshot_download
+
+    return snapshot_download(repo, revision=REVISIONS[repo])
+
+
+def load_pinned(key):
+    """load a TTS model at its pinned revision (mlx-audio passes `revision` through to the Hub download)"""
+    from mlx_audio.tts.utils import load_model
+
+    repo = REPOS[key]
+    return load_model(repo, revision=REVISIONS[repo]) if repo in REVISIONS else load_model(repo)
+
+
+def whisper_path():
+    return pinned(WHISPER_REPO)
+
 
 def write_wav(path, a, sr):
     with wave.open(path, "wb") as w:
@@ -146,7 +177,7 @@ def pace_pick(m, model, text, kw, check_words, n=3, wav_tmp="/tmp/_pace.wav"):
     for _ in range(n):
         a = trim(synth(m, model, text, kw), m.sample_rate)
         write_wav(wav_tmp, a, m.sample_rate)
-        heard = norm_words(mlx_whisper.transcribe(wav_tmp, path_or_hf_repo="mlx-community/whisper-small-mlx", language="en")["text"])
+        heard = norm_words(mlx_whisper.transcribe(wav_tmp, path_or_hf_repo=whisper_path(), language="en")["text"])
         ok = all(w in heard for w in want) and len(heard) <= len(want) + 3
         wps = len(want) / (len(a) / m.sample_rate)
         score = (ok, wps)
@@ -169,7 +200,7 @@ def gen(models):
 
     os.makedirs(RAW, exist_ok=True)
     if "chatterbox" in models and not os.path.exists(BUILTIN_REF):
-        t = load_model(REPOS["turbo"])
+        t = load_pinned("turbo")
         a = np.concatenate([np.array(r.audio).reshape(-1) for r in t.generate(text=BUILTIN_REF_TEXT)]).astype(np.float32)
         write_wav(BUILTIN_REF, trim(a, t.sample_rate), t.sample_rate)
         del t
@@ -178,7 +209,7 @@ def gen(models):
         if not todo:
             continue
         try:
-            m = load_model(REPOS[model])
+            m = load_pinned(model)
         except Exception as e:
             print(f"FAIL load {model}: {type(e).__name__}: {str(e)[:200]}", flush=True)
             continue
@@ -224,7 +255,7 @@ def mix():
     from mlx_audio.tts.utils import load_model
 
     os.makedirs(TAKES, exist_ok=True)
-    ann = load_model(REPOS["kokoro"])
+    ann = load_pinned("kokoro")
     seq, report = [], []
     for tid, model, heroine, label, settings, lines, kw in PLAN:
         raw = os.path.join(RAW, tid + ".wav")
@@ -233,7 +264,7 @@ def mix():
             continue
         take = os.path.join(TAKES, tid + ".wav")
         level(raw, take)
-        r = mlx_whisper.transcribe(take, path_or_hf_repo="mlx-community/whisper-small-mlx", language="en")
+        r = mlx_whisper.transcribe(take, path_or_hf_repo=whisper_path(), language="en")
         heard = r["text"].strip()
         want = norm_words(" ".join(lines))
         got = norm_words(heard.replace("PhD", "phd").replace("Ph.D.", "phd").replace("P.H.D.", "phd"))

@@ -13,6 +13,10 @@ out/
 
 # generated audio: voices, takes, SFX, music, build copies
 *.wav
+# ...except the three locked reference voice samples (bible §13)
+!series/onceuponawhy/voice-tests/v2/refs/nora-ref-a.wav
+!series/onceuponawhy/voice-tests/v2/takes/mika-turbo.wav
+!series/onceuponawhy/voice-tests/v3-claude/takes/k-am_echo-1.05-p1.wav
 *.mp3
 *.m4a
 *.flac

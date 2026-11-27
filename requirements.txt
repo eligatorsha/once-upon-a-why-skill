@@ -1,7 +1,12 @@
-# Python 3.12 venv on Apple Silicon (MLX). Models download separately on first use (see README, "Voice models").
+# Python 3.12 venv on Apple Silicon (MLX). Exact versions the series was made with.
+# Models download separately on first use, at pinned revisions (series/onceuponawhy/voice-tests/v2/make_takes.py).
+mlx==0.32.4
 mlx-audio==0.6.5
 mlx-whisper==0.4.3
-misaki==0.9.4
+misaki[en]==0.9.4
 num2words==0.5.14
-numpy
-scipy
+numpy==2.5.4
+scipy==1.18.1
+huggingface_hub
+# English model for misaki (Kokoro's phonemiser)
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl

@@ -61,9 +61,9 @@ def main():
                 del models[k]  # 8 GB Mac: one big model at a time
             import gc
             gc.collect()
-            models[model] = load_model(mt.REPOS[model])
+            models[model] = mt.load_pinned(model)
         m = models[model]
-        ann = models.setdefault("kokoro", load_model(mt.REPOS["kokoro"]))
+        ann = models.setdefault("kokoro", mt.load_pinned("kokoro"))
         lab = mt.trim(mt.synth(ann, "kokoro", label, dict(voice="af_sky", speed=1.05)), 24000)
         p = os.path.join(tmp, f"{si:02d}-label.wav")
         mt.write_wav(p, np.concatenate([lab, np.zeros(int(0.4 * 24000), np.float32)]), 24000)
@@ -80,7 +80,7 @@ def main():
             else:
                 a = mt.trim(mt.synth(m, model, text, kw), m.sample_rate)
                 mt.write_wav(p, np.concatenate([a, np.zeros(int(GAP * m.sample_rate), np.float32)]), m.sample_rate)
-            heard = mlx_whisper.transcribe(p, path_or_hf_repo="mlx-community/whisper-small-mlx", language="en")["text"].strip()
+            heard = mlx_whisper.transcribe(p, path_or_hf_repo=mt.whisper_path(), language="en")["text"].strip()
             for f in (p + ".cand.wav", p + ".cand.wav.fast.wav"):
                 if os.path.exists(f):
                     os.remove(f)

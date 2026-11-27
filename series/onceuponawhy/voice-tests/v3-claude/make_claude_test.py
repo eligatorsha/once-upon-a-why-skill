@@ -88,7 +88,7 @@ def gen(models):
         todo = [p for p in PLAN if p["model"] == model and not os.path.exists(os.path.join(RAW, p["id"] + ".json"))]
         if not todo:
             continue
-        m = load_model(mt.REPOS[model])
+        m = mt.load_pinned(model)
         sr = m.sample_rate
         for p in todo:
             info = []
@@ -127,7 +127,7 @@ def mix():
     from mlx_audio.tts.utils import load_model
 
     os.makedirs(TAKES, exist_ok=True)
-    ann = load_model(mt.REPOS["kokoro"])
+    ann = mt.load_pinned("kokoro")
     seq, report = [], []
     for n, p in enumerate(PLAN, 1):
         js = os.path.join(RAW, p["id"] + ".json")

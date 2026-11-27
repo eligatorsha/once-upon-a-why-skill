@@ -10,7 +10,7 @@ def main():
     from mlx_audio.tts.utils import load_model
     out, rep = [], []
     for who, model, kw in (("mika", "turbo", {}), ("claude", "kokoro", dict(voice=mv.CLAUDE_VOICE, speed=1.05))):
-        m = load_model(mt.REPOS[model]); sr = m.sample_rate
+        m = mt.load_pinned(model); sr = m.sample_rate
         for i, s in enumerate(SENT):
             raw = os.path.join(mv.V, f"_pc-{who}-{i}.wav")
             mt.write_wav(raw, mt.trim(mt.synth(m, model, mv.prep(s, who), kw), sr), sr)
